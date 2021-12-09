@@ -1,46 +1,69 @@
-# mastrobot_example.py
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+# -*- coding: utf-8 -*-
+import telebot
+import config
+import random
 
-# function to handle the /start command
-def start(update, context):
-    update.message.reply_text('start command received')
+from telebot import types
 
-# function to handle the /help command
-def help(update, context):
-    update.message.reply_text('help command received')
+bot = telebot.TeleBot(config.TOKEN)
 
-# function to handle errors occured in the dispatcher
-def error(update, context):
-    update.message.reply_text('an error occured')
 
-# function to handle normal text
-def text(update, context):
-    text_received = update.message.text
-    update.message.reply_text(f'did you said "{text_received}" ?')
+@bot.message_handler(commands=['start'])
+def welcome(message):
+    sti = open('static/welcome.webp', 'rb')
+    bot.send_sticker(message.chat.id, sti)
 
-def main():
-    TOKEN = "2140744898:AAE3VxNEAq1EUuacpQR4Wn13kSCx1bKguzs"
+    # keyboard
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    item1 = types.KeyboardButton("Рандомное число")
+    item2 = types.KeyboardButton("Как дела?")
 
-    # create the updater, that will automatically create also a dispatcher and a queue to
-    # make them dialoge
-    updater = Updater(TOKEN, use_context=True)
-    dispatcher = updater.dispatcher
+    markup.add(item1, item2)
 
-    # add handlers for start and help commands
-    dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(CommandHandler("help", help))
+    bot.send_message(message.chat.id,
+                     "Добро пожаловать, {0.first_name}!\nЯ - <b>{1.first_name}</b>, бот созданный чтобы быть подопытным кроликом.".format(
+                         message.from_user, bot.get_me()),
+                     parse_mode='html', reply_markup=markup)
 
-    # add an handler for normal text (not commands)
-    dispatcher.add_handler(MessageHandler(Filters.text, text))
 
-    # add an handler for errors
-    dispatcher.add_error_handler(error)
+@bot.message_handler(content_types=['text'])
+def lalala(message):
+    if message.chat.type == 'private':
+        if message.text == 'Рандомное число':
+            bot.send_message(message.chat.id, str(random.randint(0, 100)))
+        elif message.text == 'Как дела?':
 
-    # start your shiny new bot
-    updater.start_polling()
+            markup = types.InlineKeyboardMarkup(row_width=2)
+            item1 = types.InlineKeyboardButton("Хорошо", callback_data='good')
+            item2 = types.InlineKeyboardButton("Не очень", callback_data='bad')
 
-    # run the bot until Ctrl-C
-    updater.idle()
+            markup.add(item1, item2)
 
-if __name__ == '__main__':
-    main()
+            bot.send_message(message.chat.id, 'Отлично, сам как?', reply_markup=markup)
+        else:
+            bot.send_message(message.chat.id, 'Я не знаю что ответить')
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback_inline(call):
+    try:
+        if call.message:
+            if call.data == 'good':
+                bot.send_message(call.message.chat.id, 'Вот и отличненько ')
+            elif call.data == 'bad':
+                bot.send_message(call.message.chat.id, 'Бывает')
+
+            # remove inline buttons
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Как дела?",
+                                  reply_markup=None)
+
+            # show alert
+            bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
+                                      text="ЭТО ТЕСТОВОЕ УВЕДОМЛЕНИЕ!!11")
+
+    except Exception as e:
+        print(repr(e))
+
+
+# RUN
+bot.polling(none_stop=True)
