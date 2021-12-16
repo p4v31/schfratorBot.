@@ -4,6 +4,7 @@ from telegram.ext import Updater, CommandHandler
 from telegram.ext import MessageHandler, Filters, InlineQueryHandler
 from visioner import vizik
 from cezar import cezarik
+from atbatsha import atbashh
 
 STATE = None
 LANG = 1
@@ -15,6 +16,7 @@ STR = 6
 MENU_CEZAR=7
 TEXT_CEZAR=8
 KEY_CEZAR=9
+ATBASH=10
 
 TOKEN = '2140744898:AAE3VxNEAq1EUuacpQR4Wn13kSCx1bKguzs'
 updater = Updater(token=TOKEN)
@@ -27,10 +29,18 @@ def start(update, context):
                              text="Привет!Я бот, который поможет тебе зашифровать/расшифровать послания с помощью различных шифров.Напиши /")
 
 
-def visioner(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id,
-                             text=visioner)
+def cezarius(update, context):
+    global STATE
+    STATE = MENU_CEZAR
+    update.message.reply_text(
+        "Введите Ш чтобы зашифровать сообщение, Р чтобы расшифровать и В чтобы выйти(только русский язык)")
 
+
+def atbatsha(update,context):
+    global STATE
+    STATE = ATBASH
+    update.message.reply_text(
+        "Введите текст:")
 
 def visioner(update, context):
     global STATE
@@ -53,8 +63,14 @@ def echo(update, context):
         return recieved_txt(update, context)
     if STATE == STR:
         return recieved_str(update, context)
-
-
+    if STATE == MENU_CEZAR:
+        return recieved_menu_cezar(update, context)
+    if STATE == TEXT_CEZAR:
+        return recieved_text_cezar(update, context)
+    if STATE == KEY_CEZAR:
+        return recieved_key_cezar(update, context)
+    if STATE == ATBASH:
+        return recieved_atbash(update, context)
 
 def recieved_lang(update, context):
     global STATE
@@ -103,7 +119,32 @@ def recieved_str(update, context):
     vizik(context,update)
     print(context.user_data)
 
+def recieved_menu_cezar(update, context):
+    global STATE
+    menu_cezar = update.message.text
+    context.user_data['menu_cezar'] = menu_cezar
+    update.message.reply_text("Введите текст:")
+    STATE = TEXT_CEZAR
 
+def recieved_text_cezar(update, context):
+    global STATE
+    text_cezar = update.message.text
+    context.user_data['text_cezar'] = text_cezar
+    update.message.reply_text("Введите ключ:")
+    STATE=KEY_CEZAR
+def recieved_key_cezar(update, context):
+    global STATE
+    key_cezar = update.message.text
+    context.user_data['key_cezar'] = key_cezar
+    STATE = None
+    cezarik(update,context)
+
+def recieved_atbash(update, context):
+    global STATE
+    atbash = update.message.text
+    context.user_data['atbash'] = atbash
+    STATE = None
+    atbashh(update,context)
 # функция обработки команды '/caps'
 def caps(update, context):
     if context.args:
@@ -145,6 +186,12 @@ dispatcher.add_handler(start_handler)
 
 visioner_handler = CommandHandler('visioner', visioner)
 dispatcher.add_handler(visioner_handler)
+
+cezarius_handler = CommandHandler('cezarius', cezarius)
+dispatcher.add_handler(cezarius_handler)
+
+atbatsha_handler = CommandHandler('atbatsha', atbatsha)
+dispatcher.add_handler(atbatsha_handler)
 
 # обработчик текстовых сообщений
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)

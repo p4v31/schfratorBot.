@@ -1,16 +1,16 @@
-def cezarik(context,update):
+def cezarik(update,context):
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-    while True:
-        print('Введите Ш чтобы зашифровать сообщение, Р чтобы расшифровать и В чтобы выйти')
-        menu = input('>>> ').lower()
-        if menu == 'в':
+    t=0
+    while t==0:
+        main = context.user_data['menu_cezar'].lower()
+        if main == 'в':
             break
-        elif not (menu == 'ш' or menu == 'р'):
+        elif not (main == 'ш' or main == 'р'):
             continue
         output = ''
-        message = input('Введите строку: ').lower()
-        key = int(input('Введите ключ: '))
-        if menu == 'р':
+        message = context.user_data['text_cezar'].lower()
+        key = int(context.user_data['key_cezar'])
+        if main == 'р':
             key *= -1
         for letter in message:
             if letter in alphabet:
@@ -19,4 +19,8 @@ def cezarik(context,update):
                 output += alphabet[new_key]
             else:
                 output += letter
-        print('Результат: ' + output)
+        t+=1
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text='Результат:')
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text=output)
