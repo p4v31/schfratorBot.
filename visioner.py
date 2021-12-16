@@ -97,6 +97,8 @@ def vizik(context,update):
                                      text='Вот гамма(ключ) для расшифроки полученного сообщения-')
             context.bot.send_message(chat_id=update.effective_chat.id,
                                      text=d)
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text='Для продолжения работы с ботом начните печатать / и выберите команду')
         if a == 'расшифр':
             c = 0
             p, b, v, n, m = [], [], [], [], []
@@ -142,6 +144,8 @@ def vizik(context,update):
                                      text='Результат:')
             context.bot.send_message(chat_id=update.effective_chat.id,
                                      text=p)
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text='Для продолжения работы с ботом начните печатать / и выберите команду')
 
     else:
         a = context.user_data['inf']
@@ -228,6 +232,8 @@ def vizik(context,update):
                                      text='Вот гамма(ключ) для расшифроки полученного сообщения:')
             context.bot.send_message(chat_id=update.effective_chat.id,
                                      text=d)
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text='Для продолжения работы с ботом начните печатать / и выберите команду')
         if a == 'расшифр':
             c = 0
             p, b, v, n, m = [], [], [], [], []
@@ -274,3 +280,4 @@ def vizik(context,update):
                                      text='Результат:')
             context.bot.send_message(chat_id=update.effective_chat.id,
                                      text=p)
+            context.bot.send_message(chat_id=update.effective_chat.id,text='Для продолжения работы с ботом начните печатать / и выберите команду')

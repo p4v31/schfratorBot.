@@ -6,10 +6,15 @@ def atbashh(update,context):
     s = s.lower()
     s = list(str(s))
     for i in range(len(s)):
-        e = abc.index(s[i])
-        e = 26 - e - 1
-        u += abc[e]
+        if s[i] not in abc:
+            u += s[i]
+        else:
+            e = abc.index(s[i])
+            e = 26 - e - 1
+            u += abc[e]
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text='Результат:')
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=u)
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text='Для продолжения работы с ботом начните печатать / и выберите команду')

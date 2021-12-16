@@ -33,6 +33,12 @@ def cezarius(update, context):
     global STATE
     STATE = MENU_CEZAR
     update.message.reply_text(
+        "Выбран шифр Цезаря.")
+    update.message.reply_text(
+        "Язык ввода - русский")
+    update.message.reply_text(
+        "Функции: шифрование, расшифрование")
+    update.message.reply_text(
         "Введите Ш чтобы зашифровать сообщение, Р чтобы расшифровать и В чтобы выйти(только русский язык)")
 
 
@@ -40,11 +46,23 @@ def atbatsha(update,context):
     global STATE
     STATE = ATBASH
     update.message.reply_text(
+        "Выбран шифр Атбатша.")
+    update.message.reply_text(
+        "Язык ввода - английский")
+    update.message.reply_text(
+        "Функции: шифрование")
+    update.message.reply_text(
         "Введите текст:")
 
 def visioner(update, context):
     global STATE
     STATE = LANG
+    update.message.reply_text(
+        "Выбран шифр Виженера.")
+    update.message.reply_text(
+        "Язык ввода - английский, русский. Бот предоставит возможность выбора")
+    update.message.reply_text(
+        "Функции: шифрование, расшифрование, выбор гаммы, приведение к одному регистру")
     update.message.reply_text("Выберите язык.Для сообщения на русском языке команда - русс, а для английского - англ.")
 
 
