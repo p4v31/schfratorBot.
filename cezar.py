@@ -7,7 +7,7 @@ def cezarik(update,context):
             break
         elif not (main == 'ш' or main == 'р'):
             continue
-        output = ''
+        n = ''
         message = context.user_data['text_cezar'].lower()
         key = int(context.user_data['key_cezar'])
         if main == 'р':
@@ -16,13 +16,13 @@ def cezarik(update,context):
             if letter in alphabet:
                 t = alphabet.find(letter)
                 new_key = (t + key) % len(alphabet)
-                output += alphabet[new_key]
+                n += alphabet[new_key]
             else:
-                output += letter
+                n += letter
         t+=1
         context.bot.send_message(chat_id=update.effective_chat.id,
                                  text='Результат:')
         context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text=output)
+                                 text=n)
         context.bot.send_message(chat_id=update.effective_chat.id,
                                  text='Для продолжения работы с ботом начните печатать / и выберите команду')
