@@ -83,22 +83,14 @@ def vizik(context,update):
             if t == 'да':
                 p = p.lower()
                 context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text='Результат:')
-                context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text=p)
+                                         text='Результат:'+p)
             else:
                 context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text='Результат:')
-                context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text=p)
+                                         text='Результат:'+p)
             d = ''.join(d)
             d = d.lower()
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text='Вот гамма(ключ) для расшифроки полученного сообщения-')
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text=d)
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text='Для продолжения работы с ботом начните печатать / и выберите команду')
+#            context.bot.send_message(chat_id=update.effective_chat.id,
+#                                    text='Вот гамма(ключ) для расшифроки полученного сообщения-'+d)
         if a == 'расшифр':
             c = 0
             p, b, v, n, m = [], [], [], [], []
@@ -141,12 +133,7 @@ def vizik(context,update):
                 for i in range(len(v)): p.insert(v[i], m[i])
             p = ''.join(p)
             context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text='Результат:')
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text=p)
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text='Для продолжения работы с ботом начните печатать / и выберите команду')
-
+                                     text='Результат:'+p)
     else:
         a = context.user_data['inf']
         if a == 'шифр':
@@ -218,22 +205,18 @@ def vizik(context,update):
             if t == 'да':
                 p = p.lower()
                 context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text='Результат:')
+                                         text='Результат:'+p)
                 context.bot.send_message(chat_id=update.effective_chat.id,
                                          text=p)
             else:
                 context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text='Результат:')
+                                         text='Результат:'+p)
                 context.bot.send_message(chat_id=update.effective_chat.id,
                                          text=p)
             d = ''.join(d)
             d = d.lower()
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text='Вот гамма(ключ) для расшифроки полученного сообщения:')
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text=d)
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text='Для продолжения работы с ботом начните печатать / и выберите команду')
+#            context.bot.send_message(chat_id=update.effective_chat.id,
+#                                     text='Вот гамма(ключ) для расшифроки полученного сообщения:'+d)
         if a == 'расшифр':
             c = 0
             p, b, v, n, m = [], [], [], [], []
@@ -277,7 +260,4 @@ def vizik(context,update):
                 for i in range(len(v)): p.insert(v[i], m[i])
             p = ''.join(p)
             context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text='Результат:')
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                                     text=p)
-            context.bot.send_message(chat_id=update.effective_chat.id,text='Для продолжения работы с ботом начните печатать / и выберите команду')
+                                     text='Результат:'+p)

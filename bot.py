@@ -33,38 +33,19 @@ def cezarius(update, context):
     global STATE
     STATE = MENU_CEZAR
     update.message.reply_text(
-        "Выбран шифр Цезаря.")
-    update.message.reply_text(
-        "Язык ввода - русский")
-    update.message.reply_text(
-        "Функции: шифрование, расшифрование")
-    update.message.reply_text(
-        "Введите Ш чтобы зашифровать сообщение, Р чтобы расшифровать и В чтобы выйти(только русский язык)")
-
+        "Выбран шифр Цезаря\n\nЯзык ввода - русский\n\nФункции: шифрование, расшифрование\n\nВведите Ш чтобы зашифровать сообщение, Р чтобы расшифровать")
 
 def atbatsha(update,context):
     global STATE
     STATE = ATBASH
     update.message.reply_text(
-        "Выбран шифр Атбатша.")
-    update.message.reply_text(
-        "Язык ввода - английский")
-    update.message.reply_text(
-        "Функции: шифрование")
-    update.message.reply_text(
-        "Введите текст:")
+        "Выбран шифр Атбатша\n\nЯзык ввода - английский\n\nФункции: шифрование\n\nВведите текст:")
 
 def visioner(update, context):
     global STATE
     STATE = LANG
     update.message.reply_text(
-        "Выбран шифр Виженера.")
-    update.message.reply_text(
-        "Язык ввода - английский, русский. Бот предоставит возможность выбора")
-    update.message.reply_text(
-        "Функции: шифрование, расшифрование, выбор гаммы, приведение к одному регистру")
-    update.message.reply_text("Выберите язык.Для сообщения на русском языке команда - русс, а для английского - англ.")
-
+        "Выбран шифр Виженера\n\nЯзык ввода - английский, русский\n\nБот предоставит возможность выбора\n\nФункции: шифрование, расшифрование, выбор гаммы, приведение к одному регистру\n\nВыберите язык.Для сообщения на русском языке команда - русс, а для английского - англ")
 
 # функция обработки текстовых сообщений
 def echo(update, context):
@@ -93,7 +74,7 @@ def echo(update, context):
 def recieved_lang(update, context):
     global STATE
     context.user_data['lang'] = update.message.text
-    update.message.reply_text("Шифрование или же расшифрование?Команды шифр/расшифр соответственно.")
+    update.message.reply_text("Шифрование или же расшифрование?Команды шифр или расшифр соответственно")
     STATE = INF
 
 

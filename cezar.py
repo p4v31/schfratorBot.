@@ -21,8 +21,4 @@ def cezarik(update,context):
                 n += letter
         t+=1
         context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text='Результат:')
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text=n)
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text='Для продолжения работы с ботом начните печатать / и выберите команду')
+                                 text='Результат:'+n)
