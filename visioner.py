@@ -1,4 +1,10 @@
 def vizik(context,update):
+    """
+
+    :param context: 
+    :param update: 
+
+    """
     # alphabet=dict = {chr(ord('а') + i) : chr(ord('А') + i) for i in range(33)}
     alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у',
                 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
@@ -206,13 +212,9 @@ def vizik(context,update):
                 p = p.lower()
                 context.bot.send_message(chat_id=update.effective_chat.id,
                                          text='Результат:'+p)
-                context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text=p)
             else:
                 context.bot.send_message(chat_id=update.effective_chat.id,
                                          text='Результат:'+p)
-                context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text=p)
             d = ''.join(d)
             d = d.lower()
 #            context.bot.send_message(chat_id=update.effective_chat.id,

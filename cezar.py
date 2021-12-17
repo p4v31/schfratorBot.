@@ -1,4 +1,10 @@
 def cezarik(update,context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
     t=0
     while t==0:

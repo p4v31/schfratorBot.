@@ -25,23 +25,47 @@ dispatcher = updater.dispatcher
 
 # функция обработки команды '/start'
 def start(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Привет!Я бот, который поможет тебе зашифровать/расшифровать послания с помощью различных шифров.Напиши /")
 
 
 def cezarius(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     STATE = MENU_CEZAR
     update.message.reply_text(
         "Выбран шифр Цезаря\n\nЯзык ввода - русский\n\nФункции: шифрование, расшифрование\n\nВведите Ш чтобы зашифровать сообщение, Р чтобы расшифровать")
 
 def atbatsha(update,context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     STATE = ATBASH
     update.message.reply_text(
         "Выбран шифр Атбатша\n\nЯзык ввода - английский\n\nФункции: шифрование\n\nВведите текст:")
 
 def visioner(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     STATE = LANG
     update.message.reply_text(
@@ -49,6 +73,12 @@ def visioner(update, context):
 
 # функция обработки текстовых сообщений
 def echo(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     if STATE == LANG:
         return recieved_lang(update, context)
@@ -72,13 +102,25 @@ def echo(update, context):
         return recieved_atbash(update, context)
 
 def recieved_lang(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     context.user_data['lang'] = update.message.text
-    update.message.reply_text("Шифрование или же расшифрование?Команды шифр или расшифр соответственно")
+    update.message.reply_text("Шифрование или расшифрование.Команды шифр или расшифр соответственно?")
     STATE = INF
 
 
 def recieved_inf(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     inf = update.message.text
     context.user_data['inf'] = inf
@@ -87,6 +129,12 @@ def recieved_inf(update, context):
 
 
 def recieved_txt(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     txt = update.message.text
     context.user_data['txt'] = txt
@@ -95,14 +143,26 @@ def recieved_txt(update, context):
 
 
 def recieved_key(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     key = update.message.text
     context.user_data['key'] = key
-    update.message.reply_text("По какой гамме шифровать/расшифровать?Команды: повтор(повтор ключа), само (повтор ключа и текста),самш(сложная совокупность ключа и текста):")
+    update.message.reply_text("По какой гамме производить операции: повтор,само,самш:")
     STATE = GAMMA
 
 
 def recieved_gamma(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     gamma = update.message.text
     context.user_data['gamma'] = gamma
@@ -111,6 +171,12 @@ def recieved_gamma(update, context):
 
 
 def recieved_str(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     str = update.message.text
     context.user_data['str'] = str
@@ -119,6 +185,12 @@ def recieved_str(update, context):
     print(context.user_data)
 
 def recieved_menu_cezar(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     menu_cezar = update.message.text
     context.user_data['menu_cezar'] = menu_cezar
@@ -126,12 +198,24 @@ def recieved_menu_cezar(update, context):
     STATE = TEXT_CEZAR
 
 def recieved_text_cezar(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     text_cezar = update.message.text
     context.user_data['text_cezar'] = text_cezar
     update.message.reply_text("Введите ключ:")
     STATE=KEY_CEZAR
 def recieved_key_cezar(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     key_cezar = update.message.text
     context.user_data['key_cezar'] = key_cezar
@@ -139,26 +223,26 @@ def recieved_key_cezar(update, context):
     cezarik(update,context)
 
 def recieved_atbash(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     global STATE
     atbash = update.message.text
     context.user_data['atbash'] = atbash
     STATE = None
     atbashh(update,context)
-# функция обработки команды '/caps'
-def caps(update, context):
-    if context.args:
-        text_caps = ' '.join(context.args).upper()
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text=text_caps)
-    else:
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text='No command argument')
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text='send: /caps argument')
-
 
 # функция обработки встроенного запроса
 def inline_caps(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     query = update.inline_query.query
     if not query:
         return
@@ -175,6 +259,12 @@ def inline_caps(update, context):
 
 # функция обработки не распознных команд
 def unknown(update, context):
+    """
+
+    :param update: 
+    :param context: 
+
+    """
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Я не понимаю, что Вы написали.Ознакомьтесь с возможностями бота или повторите попытку.")
 
@@ -183,12 +273,15 @@ def unknown(update, context):
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
+# обработчик команды '/visioner'
 visioner_handler = CommandHandler('visioner', visioner)
 dispatcher.add_handler(visioner_handler)
 
+# обработчик команды '/cezarius'
 cezarius_handler = CommandHandler('cezarius', cezarius)
 dispatcher.add_handler(cezarius_handler)
 
+# обработчик команды '/atbasha'
 atbatsha_handler = CommandHandler('atbatsha', atbatsha)
 dispatcher.add_handler(atbatsha_handler)
 
@@ -196,9 +289,6 @@ dispatcher.add_handler(atbatsha_handler)
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
 dispatcher.add_handler(echo_handler)
 
-# обработчик команды '/caps'
-caps_handler = CommandHandler('caps', caps)
-dispatcher.add_handler(caps_handler)
 
 # обработчик встроенных запросов
 inline_caps_handler = InlineQueryHandler(inline_caps)
