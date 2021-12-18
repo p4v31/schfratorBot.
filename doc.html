@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #797979}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #090909}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #090909; min-height: 11.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #1233e6; min-height: 11.0px}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #116d12}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Menlo; color: #797979}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #797979; min-height: 11.0px}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Menlo; color: #116d12}
+    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #001da4}
+    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Courier; color: #0a4f67}
+    span.s1 {color: #001da4}
+    span.s2 {color: #1233e6}
+    span.s3 {color: #090909}
+    span.s4 {color: #520087}
+    span.s5 {font: 9.0px Courier}
+    span.s6 {color: #0a4f67}
+    span.s7 {color: #797979}
+    span.s8 {font: 9.0px Courier; color: #090909}
+    span.s9 {font: 9.0px Courier; color: #520087}
+    span.s10 {color: #6d6d6d}
+    span.s11 {font: 9.0px Courier; color: #022295}
+    span.s12 {color: #116d12}
+    span.s13 {font: 9.0px Menlo; color: #116d12}
+    span.s14 {color: #00006d}
+  </style>
+</head>
+<body>
+<p class="p1"><i># -*- coding: utf-8 -*-</i></p>
+<p class="p2"><span class="s1">from </span>telegram <span class="s1">import </span>InlineQueryResultArticle, InputTextMessageContent</p>
+<p class="p2"><span class="s1">from </span>telegram.ext <span class="s1">import </span>Updater, CommandHandler</p>
+<p class="p2"><span class="s1">from </span>telegram.ext <span class="s1">import </span>MessageHandler, Filters, InlineQueryHandler</p>
+<p class="p2"><span class="s1">from </span>visioner <span class="s1">import </span>vizik</p>
+<p class="p2"><span class="s1">from </span>cezar <span class="s1">import </span>cezarik</p>
+<p class="p2"><span class="s1">from </span>atbatsha <span class="s1">import </span>atbashh</p>
+<p class="p3"><br></p>
+<p class="p2">STATE = <span class="s1">None</span></p>
+<p class="p2">LANG = <span class="s2">1</span></p>
+<p class="p2">INF = <span class="s2">2</span></p>
+<p class="p2">GAMMA = <span class="s2">3</span></p>
+<p class="p2">KEY = <span class="s2">4</span></p>
+<p class="p2">TXT = <span class="s2">5</span></p>
+<p class="p2">STR = <span class="s2">6</span></p>
+<p class="p2">MENU_CEZAR = <span class="s2">7</span></p>
+<p class="p2">TEXT_CEZAR = <span class="s2">8</span></p>
+<p class="p2">KEY_CEZAR = <span class="s2">9</span></p>
+<p class="p2">ATBASH = <span class="s2">10</span></p>
+<p class="p4"><br></p>
+<p class="p5"><span class="s3">TOKEN = </span>'2140744898:AAE3VxNEAq1EUuacpQR4Wn13kSCx1bKguzs'</p>
+<p class="p2">updater = Updater(<span class="s4">token</span>=TOKEN)</p>
+<p class="p2">dispatcher = updater.dispatcher</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>функция</i><span class="s5"><i> </i></span><i>обработки</i><span class="s5"><i> </i></span><i>команды</i><span class="s5"><i> '/start'</i></span></p>
+<p class="p2"><span class="s1">def </span><span class="s6">start</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Главная</i><span class="s5"><i> </i></span><i>функция</i><span class="s5"><i>, </i></span><i>которая</i><span class="s5"><i> </i></span><i>запускается</i><span class="s5"><i> </i></span><i>при</i><span class="s5"><i> </i></span><i>старте</i><span class="s5"><i> </i></span><i>бота</i></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p2"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>context.bot.send_message(<span class="s4">chat_id</span>=update.effective_chat.id,</p>
+<p class="p8"><span class="s8"><span class="Apple-converted-space">                             </span></span><span class="s9">text</span><span class="s8">=</span><span class="s5">"</span>Привет<span class="s5">!</span>Я<span class="s5"> </span>бот<span class="s5">, </span>который<span class="s5"> </span>поможет<span class="s5"> </span>тебе<span class="s5"> </span>зашифровать<span class="s5">/</span>расшифровать<span class="s5"> </span>послания<span class="s5"> </span>с<span class="s5"> </span>помощью<span class="s5"> </span>различных<span class="s5"> </span>шифров<span class="s5">.</span>Напиши<span class="s5"> /"</span><span class="s8">)</span></p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">cezarius</span>(update, <span class="s10">context</span>):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>отвечающая</i><span class="s5"><i> </i></span><i>за</i><span class="s5"><i> </i></span><i>шифр</i><span class="s5"><i> </i></span><i>Цезаря</i></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = MENU_CEZAR</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(</p>
+<p class="p8"><span class="s8"><span class="Apple-converted-space">        </span></span><span class="s5">"</span>Выбран<span class="s5"> </span>шифр<span class="s5"> </span>Цезаря<span class="s11">\n\n</span>Язык<span class="s5"> </span>ввода<span class="s5"> - </span>русский<span class="s11">\n\n</span>Функции<span class="s5">: </span>шифрование<span class="s5">, </span>расшифрование<span class="s11">\n\n</span>Введите<span class="s5"> </span>Ш<span class="s5"> </span>чтобы<span class="s5"> </span>зашифровать<span class="s5"> </span>сообщение<span class="s5">, </span>Р<span class="s5"> </span>чтобы<span class="s5"> </span>расшифровать<span class="s5">"</span><span class="s8">)</span></p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">atbatsha</span>(update, <span class="s10">context</span>):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>отвечающая</i><span class="s5"><i> </i></span><i>за</i><span class="s5"><i> </i></span><i>шифр</i><span class="s5"><i> </i></span><i>Атбатша</i></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = ATBASH</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(</p>
+<p class="p8"><span class="s8"><span class="Apple-converted-space">        </span></span><span class="s5">"</span>Выбран<span class="s5"> </span>шифр<span class="s5"> </span>Атбатша<span class="s11">\n\n</span>Язык<span class="s5"> </span>ввода<span class="s5"> - </span>английский<span class="s11">\n\n</span>Функции<span class="s5">: </span>шифрование<span class="s11">\n\n</span>Введите<span class="s5"> </span>текст<span class="s5">:"</span><span class="s8">)</span></p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">visioner</span>(update, <span class="s10">context</span>):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>отвечающая</i><span class="s5"><i> </i></span><i>за</i><span class="s5"><i> </i></span><i>шифр</i><span class="s5"><i> </i></span><i>Виженера</i></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = LANG</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(</p>
+<p class="p8"><span class="s8"><span class="Apple-converted-space">        </span></span><span class="s5">"</span>Выбран<span class="s5"> </span>шифр<span class="s5"> </span>Виженера<span class="s11">\n\n</span>Язык<span class="s5"> </span>ввода<span class="s5"> - </span>английский<span class="s5">, </span>русский<span class="s11">\n\n</span>Бот<span class="s5"> </span>предоставит<span class="s5"> </span>возможность<span class="s5"> </span>выбора<span class="s11">\n\n</span>Функции<span class="s5">: </span>шифрование<span class="s5">, </span>расшифрование<span class="s5">, </span>выбор<span class="s5"> </span>гаммы<span class="s5">, </span>приведение<span class="s5"> </span>к<span class="s5"> </span>одному<span class="s5"> </span>регистру<span class="s11">\n\n</span>Выберите<span class="s5"> </span>язык<span class="s5">.</span>Для<span class="s5"> </span>сообщения<span class="s5"> </span>на<span class="s5"> </span>русском<span class="s5"> </span>языке<span class="s5"> </span>команда<span class="s5"> - </span>русс<span class="s5">, </span>а<span class="s5"> </span>для<span class="s5"> </span>английского<span class="s5"> - </span>англ<span class="s5">"</span><span class="s8">)</span></p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>функция</i><span class="s5"><i> </i></span><i>обработки</i><span class="s5"><i> </i></span><i>текстовых</i><span class="s5"><i> </i></span><i>сообщений</i></p>
+<p class="p2"><span class="s1">def </span><span class="s6">echo</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>которая</i><span class="s5"><i> </i></span><i>записывает</i><span class="s5"><i> </i></span><i>сообщения</i><span class="s5"><i> </i></span><i>в</i><span class="s5"><i> </i></span><i>переменные</i></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == LANG:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_lang(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == INF:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_inf(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == GAMMA:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_gamma(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == KEY:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_key(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == TXT:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_txt(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == STR:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_str(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == MENU_CEZAR:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_menu_cezar(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == TEXT_CEZAR:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_text_cezar(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == KEY_CEZAR:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_key_cezar(update, context)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if </span>STATE == ATBASH:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return </span>recieved_atbash(update, context)</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_lang</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>язык</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'lang'</span>] = update.message.text</p>
+<p class="p8"><span class="s8"><span class="Apple-converted-space">    </span>update.message.reply_text(</span><span class="s5">"</span>Шифрование<span class="s5"> </span>или<span class="s5"> </span>расшифрование<span class="s5">.</span>Команды<span class="s5"> </span>шифр<span class="s5"> </span>или<span class="s5"> </span>расшифр<span class="s5"> </span>соответственно<span class="s5">?"</span><span class="s8">)</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = INF</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_inf</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>язык</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>inf = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'inf'</span>] = inf</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(<span class="s12">"</span><span class="s13">Введите</span><span class="s12"> </span><span class="s13">текст</span><span class="s12">:"</span>)</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = TXT</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_txt</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>ключ</i><span class="s5"><i> </i></span><i>шифрования</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>txt = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'txt'</span>] = txt</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(<span class="s12">"</span><span class="s13">Введите</span><span class="s12"> </span><span class="s13">ключ</span><span class="s12"> </span><span class="s13">шифрования</span><span class="s12">:"</span>)</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = KEY</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_key</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>гамму</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>key = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'key'</span>] = key</p>
+<p class="p8"><span class="s8"><span class="Apple-converted-space">    </span>update.message.reply_text(</span><span class="s5">"</span>По<span class="s5"> </span>какой<span class="s5"> </span>гамме<span class="s5"> </span>производить<span class="s5"> </span>операции<span class="s5">: </span>повтор<span class="s5">,</span>само<span class="s5">,</span>самш<span class="s5">:"</span><span class="s8">)</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = GAMMA</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_gamma</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>да</i><span class="s5"><i> </i></span><i>или</i><span class="s5"><i> </i></span><i>нет</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>gamma = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'gamma'</span>] = gamma</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(<span class="s12">"</span><span class="s13">Сделать</span><span class="s12"> </span><span class="s13">строчными</span><span class="s12">?"</span>)</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = STR</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_str</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>текст</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>str = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'str'</span>] = str</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = <span class="s1">None</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span>vizik(context, update)</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s14">print</span>(context.user_data)</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p10"><span class="s1">def </span>recieved_menu_cezar<span class="s3">(update, context):</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>Ш</i><span class="s5"><i> </i></span><i>или</i><span class="s5"><i> </i></span><i>Д</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>menu_cezar = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'menu_cezar'</span>] = menu_cezar</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(<span class="s12">"</span><span class="s13">Введите</span><span class="s12"> </span><span class="s13">текст</span><span class="s12">:"</span>)</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = TEXT_CEZAR</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p10"><span class="s1">def </span>recieved_text_cezar<span class="s3">(update, context):</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>текст</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>text_cezar = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'text_cezar'</span>] = text_cezar</p>
+<p class="p2"><span class="Apple-converted-space">    </span>update.message.reply_text(<span class="s12">"</span><span class="s13">Введите</span><span class="s12"> </span><span class="s13">ключ</span><span class="s12">:"</span>)</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = KEY_CEZAR</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_key_cezar</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>ключ</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>key_cezar = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'key_cezar'</span>] = key_cezar</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = <span class="s1">None</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span>cezarik(update, context)</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">recieved_atbash</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i>, </i></span><i>принимающая</i><span class="s5"><i> </i></span><i>текст</i><span class="s5"><i> </i></span><i>на</i><span class="s5"><i> </i></span><i>вход</i><span class="s5"><i>. </i></span><i>Срабатывает</i><span class="s5"><i> </i></span><i>когда</i><span class="s5"><i> global </i></span><i>равен</i><span class="s5"><i> </i></span><i>определенному</i><span class="s5"><i> </i></span><i>состоянию</i><span class="s5"><i>.</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p9"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>global <span class="s3">STATE</span></p>
+<p class="p2"><span class="Apple-converted-space">    </span>atbash = update.message.text</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.user_data[<span class="s12">'atbash'</span>] = atbash</p>
+<p class="p2"><span class="Apple-converted-space">    </span>STATE = <span class="s1">None</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span>atbashh(update, context)</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">inline_caps</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i> </i></span><i>обработки</i><span class="s5"><i> </i></span><i>встроенного</i><span class="s5"><i> </i></span><i>запроса</i></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p2"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>query = update.inline_query.query</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s1">if not </span>query:</p>
+<p class="p2"><span class="Apple-converted-space">        </span><span class="s1">return</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span>results = <span class="s14">list</span>()</p>
+<p class="p2"><span class="Apple-converted-space">    </span>results.append(</p>
+<p class="p2"><span class="Apple-converted-space">        </span>InlineQueryResultArticle(</p>
+<p class="p2"><span class="Apple-converted-space">            </span><span class="s4">id</span>=query.upper(),</p>
+<p class="p5"><span class="s3"><span class="Apple-converted-space">            </span></span><span class="s4">title</span><span class="s3">=</span>'Convert to UPPER TEXT'<span class="s3">,</span></p>
+<p class="p2"><span class="Apple-converted-space">            </span><span class="s4">input_message_content</span>=InputTextMessageContent(query.upper())</p>
+<p class="p2"><span class="Apple-converted-space">        </span>)</p>
+<p class="p2"><span class="Apple-converted-space">    </span>)</p>
+<p class="p2"><span class="Apple-converted-space">    </span>context.bot.answer_inline_query(update.inline_query.id, results)</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2"><span class="s1">def </span><span class="s6">unknown</span>(update, context):</p>
+<p class="p2"><span class="Apple-converted-space">    </span><span class="s7"><i>"""</i></span></p>
+<p class="p7"><i></i><br></p>
+<p class="p6"><span class="s5"><i><span class="Apple-converted-space">    </span></i></span><i>Функция</i><span class="s5"><i> </i></span><i>обработки</i><span class="s5"><i> </i></span><i>не</i><span class="s5"><i> </i></span><i>распознных</i><span class="s5"><i> </i></span><i>команд</i></p>
+<p class="p7"><i></i><br></p>
+<p class="p1"><i><span class="Apple-converted-space">    </span>"""</i></p>
+<p class="p2"><span class="s7"><i><span class="Apple-converted-space">    </span></i></span>context.bot.send_message(<span class="s4">chat_id</span>=update.effective_chat.id,</p>
+<p class="p8"><span class="s8"><span class="Apple-converted-space">                             </span></span><span class="s9">text</span><span class="s8">=</span><span class="s5">"</span>Я<span class="s5"> </span>не<span class="s5"> </span>понимаю<span class="s5">, </span>что<span class="s5"> </span>Вы<span class="s5"> </span>написали<span class="s5">.</span>Ознакомьтесь<span class="s5"> </span>с<span class="s5"> </span>возможностями<span class="s5"> </span>бота<span class="s5"> </span>или<span class="s5"> </span>повторите<span class="s5"> </span>попытку<span class="s5">."</span><span class="s8">)</span></p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>команды</i><span class="s5"><i> '/start'</i></span></p>
+<p class="p2">start_handler = CommandHandler(<span class="s12">'start'</span>, start)</p>
+<p class="p2">dispatcher.add_handler(start_handler)</p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>команды</i><span class="s5"><i> '/visioner'</i></span></p>
+<p class="p2">visioner_handler = CommandHandler(<span class="s12">'visioner'</span>, visioner)</p>
+<p class="p2">dispatcher.add_handler(visioner_handler)</p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>команды</i><span class="s5"><i> '/cezarius'</i></span></p>
+<p class="p2">cezarius_handler = CommandHandler(<span class="s12">'cezarius'</span>, cezarius)</p>
+<p class="p2">dispatcher.add_handler(cezarius_handler)</p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>команды</i><span class="s5"><i> '/atbasha'</i></span></p>
+<p class="p2">atbatsha_handler = CommandHandler(<span class="s12">'atbatsha'</span>, atbatsha)</p>
+<p class="p2">dispatcher.add_handler(atbatsha_handler)</p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>текстовых</i><span class="s5"><i> </i></span><i>сообщений</i></p>
+<p class="p2">echo_handler = MessageHandler(Filters.text &amp; (~Filters.command), echo)</p>
+<p class="p2">dispatcher.add_handler(echo_handler)</p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>встроенных</i><span class="s5"><i> </i></span><i>запросов</i></p>
+<p class="p2">inline_caps_handler = InlineQueryHandler(inline_caps)</p>
+<p class="p2">dispatcher.add_handler(inline_caps_handler)</p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>не</i><span class="s5"><i> </i></span><i>распознных</i><span class="s5"><i> </i></span><i>команд</i></p>
+<p class="p2">unknown_handler = MessageHandler(Filters.command, unknown)</p>
+<p class="p2">dispatcher.add_handler(unknown_handler)</p>
+<p class="p3"><br></p>
+<p class="p6"><span class="s5"><i># </i></span><i>запуск</i><span class="s5"><i> </i></span><i>прослушивания</i><span class="s5"><i> </i></span><i>сообщений</i></p>
+<p class="p2">updater.start_polling()</p>
+<p class="p6"><span class="s5"><i># </i></span><i>обработчик</i><span class="s5"><i> </i></span><i>нажатия</i><span class="s5"><i> Ctrl+C</i></span></p>
+<p class="p2">updater.idle()</p>
+<p class="p3"><br></p>
+</body>
+</html>
