@@ -13,10 +13,10 @@ GAMMA = 3
 KEY = 4
 TXT = 5
 STR = 6
-MENU_CEZAR=7
-TEXT_CEZAR=8
-KEY_CEZAR=9
-ATBASH=10
+MENU_CEZAR = 7
+TEXT_CEZAR = 8
+KEY_CEZAR = 9
+ATBASH = 10
 
 TOKEN = '2140744898:AAE3VxNEAq1EUuacpQR4Wn13kSCx1bKguzs'
 updater = Updater(token=TOKEN)
@@ -27,8 +27,7 @@ dispatcher = updater.dispatcher
 def start(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Главная функция, которая запускается при старте бота
 
     """
     context.bot.send_message(chat_id=update.effective_chat.id,
@@ -38,8 +37,7 @@ def start(update, context):
 def cezarius(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, отвечающая за шифр Цезаря
 
     """
     global STATE
@@ -47,11 +45,11 @@ def cezarius(update, context):
     update.message.reply_text(
         "Выбран шифр Цезаря\n\nЯзык ввода - русский\n\nФункции: шифрование, расшифрование\n\nВведите Ш чтобы зашифровать сообщение, Р чтобы расшифровать")
 
-def atbatsha(update,context):
+
+def atbatsha(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, отвечающая за шифр Атбатша
 
     """
     global STATE
@@ -59,11 +57,11 @@ def atbatsha(update,context):
     update.message.reply_text(
         "Выбран шифр Атбатша\n\nЯзык ввода - английский\n\nФункции: шифрование\n\nВведите текст:")
 
+
 def visioner(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, отвечающая за шифр Виженера
 
     """
     global STATE
@@ -71,12 +69,12 @@ def visioner(update, context):
     update.message.reply_text(
         "Выбран шифр Виженера\n\nЯзык ввода - английский, русский\n\nБот предоставит возможность выбора\n\nФункции: шифрование, расшифрование, выбор гаммы, приведение к одному регистру\n\nВыберите язык.Для сообщения на русском языке команда - русс, а для английского - англ")
 
+
 # функция обработки текстовых сообщений
 def echo(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, которая записывает сообщения в переменные
 
     """
     global STATE
@@ -101,11 +99,11 @@ def echo(update, context):
     if STATE == ATBASH:
         return recieved_atbash(update, context)
 
+
 def recieved_lang(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая язык на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
@@ -117,8 +115,7 @@ def recieved_lang(update, context):
 def recieved_inf(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая язык на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
@@ -131,8 +128,7 @@ def recieved_inf(update, context):
 def recieved_txt(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая ключ шифрования на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
@@ -145,8 +141,7 @@ def recieved_txt(update, context):
 def recieved_key(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая гамму на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
@@ -159,8 +154,7 @@ def recieved_key(update, context):
 def recieved_gamma(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая да или нет на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
@@ -173,22 +167,21 @@ def recieved_gamma(update, context):
 def recieved_str(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая текст на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
     str = update.message.text
     context.user_data['str'] = str
     STATE = None
-    vizik(context,update)
+    vizik(context, update)
     print(context.user_data)
+
 
 def recieved_menu_cezar(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая Ш или Д на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
@@ -197,50 +190,49 @@ def recieved_menu_cezar(update, context):
     update.message.reply_text("Введите текст:")
     STATE = TEXT_CEZAR
 
+
 def recieved_text_cezar(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая текст на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
     text_cezar = update.message.text
     context.user_data['text_cezar'] = text_cezar
     update.message.reply_text("Введите ключ:")
-    STATE=KEY_CEZAR
+    STATE = KEY_CEZAR
+
+
 def recieved_key_cezar(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая ключ на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
     key_cezar = update.message.text
     context.user_data['key_cezar'] = key_cezar
     STATE = None
-    cezarik(update,context)
+    cezarik(update, context)
+
 
 def recieved_atbash(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция, принимающая текст на вход. Срабатывает когда global равен определенному состоянию.
 
     """
     global STATE
     atbash = update.message.text
     context.user_data['atbash'] = atbash
     STATE = None
-    atbashh(update,context)
+    atbashh(update, context)
 
-# функция обработки встроенного запроса
+
 def inline_caps(update, context):
     """
-
-    :param update: 
-    :param context: 
+    Функция обработки встроенного запроса
 
     """
     query = update.inline_query.query
@@ -257,12 +249,10 @@ def inline_caps(update, context):
     context.bot.answer_inline_query(update.inline_query.id, results)
 
 
-# функция обработки не распознных команд
 def unknown(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Функция обработки не распознных команд
 
     """
     context.bot.send_message(chat_id=update.effective_chat.id,
@@ -288,7 +278,6 @@ dispatcher.add_handler(atbatsha_handler)
 # обработчик текстовых сообщений
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
 dispatcher.add_handler(echo_handler)
-
 
 # обработчик встроенных запросов
 inline_caps_handler = InlineQueryHandler(inline_caps)

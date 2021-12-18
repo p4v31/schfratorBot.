@@ -1,13 +1,14 @@
-def cezarik(update,context):
+def cezarik(update, context):
     """
 
-    :param update: 
-    :param context: 
+    Шифр Цезаря, также известный как шифр сдвига, код Цезаря или сдвиг Цезаря — один из самых простых и наиболее широко известных методов шифрования.
+
+    Шифр Цезаря — это вид шифра подстановки, в котором каждый символ в открытом тексте заменяется символом, находящимся на некотором постоянном числе позиций левее или правее него в алфавите. Например, в шифре со сдвигом вправо на 3, А была бы заменена на Г, Б станет Д, и так далее.
 
     """
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-    t=0
-    while t==0:
+    t = 0
+    while t == 0:
         main = context.user_data['menu_cezar'].lower()
         if main == 'в':
             break
@@ -25,6 +26,6 @@ def cezarik(update,context):
                 n += alphabet[new_key]
             else:
                 n += letter
-        t+=1
+        t += 1
         context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text='Результат:'+n)
+                                 text='Результат:' + n)
